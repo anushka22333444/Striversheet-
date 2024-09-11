@@ -1,0 +1,21 @@
+class Solution {
+    public boolean check(int[] nums) {
+        int n = nums.length;
+        int decreaseCount = 0;  // To count how many times we detect a "drop" in sorted order
+
+        for (int i = 1; i < n; i++) {
+            // If the current element is smaller than the previous one, it's a "drop"
+            if (nums[i] < nums[i - 1]) {
+                decreaseCount++;
+            }
+        }
+
+        // Check the boundary between the last and first element for a "drop"
+        if (nums[n - 1] > nums[0]) {
+            decreaseCount++;
+        }
+
+        // The array is sorted and rotated if there is at most one "drop"
+        return decreaseCount <= 1;
+    }
+}
