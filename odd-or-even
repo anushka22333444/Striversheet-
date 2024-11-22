@@ -1,0 +1,10 @@
+class Solution {
+    static String oddEven(int n) {
+        // Check if the number is even
+        if (n % 2 == 0) {
+            return "even";
+        } else {
+            return "odd";
+        }
+    }
+}
