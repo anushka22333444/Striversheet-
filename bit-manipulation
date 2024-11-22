@@ -1,0 +1,10 @@
+class Solution {
+    static void bitManipulation(int num, int i) {
+        // code here
+        i = i-1;
+        int ithBit = (num>>i)&1;
+        int numWithSetBit =( num | (1<<i));
+        int clearIthBit = (num & ~(1<<i));
+        System.out.print(ithBit+" "+numWithSetBit+" "+clearIthBit);
+    }
+}
