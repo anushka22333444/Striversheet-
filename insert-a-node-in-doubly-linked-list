@@ -1,0 +1,35 @@
+class Solution {
+    // Function to insert a new node at the given position in a doubly linked list.
+    Node addNode(Node head, int p, int x) {
+        // Create a new node with the given value `x`.
+        Node newNode = new Node(x);
+
+        // Case 1: If the list is empty.
+        if (head == null) {
+            return newNode; // The new node becomes the head.
+        }
+
+        // Traverse to the position `p`.
+        Node current = head;
+        int count = 0;
+
+        while (count < p && current.next != null) {
+            current = current.next;
+            count++;
+        }
+
+        // Now `current` is at position `p`.
+        if (count == p) {
+            // Insert the new node after `current`.
+            newNode.next = current.next;
+            newNode.prev = current;
+
+            if (current.next != null) {
+                current.next.prev = newNode;
+            }
+            current.next = newNode;
+        }
+
+        return head; // Return the head of the updated list.
+    }
+}
