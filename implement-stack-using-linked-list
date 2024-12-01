@@ -1,0 +1,38 @@
+class MyStack {
+    // Node class representing an element in the stack
+    class StackNode {
+        int data;
+        StackNode next;
+        StackNode(int a) {
+            data = a;
+            next = null;
+        }
+    }
+    
+    // Top of the stack
+    StackNode top;
+
+    // Function to push an integer into the stack
+    void push(int a) {
+        // Create a new node with the given data
+        StackNode newNode = new StackNode(a);
+        // Link the new node to the current top
+        newNode.next = top;
+        // Update the top to the new node
+        top = newNode;
+    }
+
+    // Function to remove an item from the top of the stack
+    int pop() {
+        // If the stack is empty, return -1
+        if (top == null) {
+            return -1;
+        }
+        // Store the data of the top node
+        int poppedValue = top.data;
+        // Move the top pointer to the next node
+        top = top.next;
+        // Return the popped value
+        return poppedValue;
+    }
+}
