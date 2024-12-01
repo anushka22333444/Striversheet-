@@ -1,0 +1,40 @@
+class MinStack {
+    private Stack<Integer> stack;      // Main stack for elements
+    private Stack<Integer> minStack;   // Auxiliary stack for tracking minimum values
+
+    // Constructor to initialize the MinStack
+    public MinStack() {
+        stack = new Stack<>();
+        minStack = new Stack<>();
+    }
+
+    // Pushes an element onto the stack
+    public void push(int val) {
+        stack.push(val);
+        // Push to minStack only if it's empty or val is <= the current minimum
+        if (minStack.isEmpty() || val <= minStack.peek()) {
+            minStack.push(val);
+        }
+    }
+
+    // Removes the top element from the stack
+    public void pop() {
+        if (!stack.isEmpty()) {
+            int popped = stack.pop();
+            // If the popped element is the current minimum, remove it from minStack
+            if (popped == minStack.peek()) {
+                minStack.pop();
+            }
+        }
+    }
+
+    // Retrieves the top element of the stack
+    public int top() {
+        return stack.isEmpty() ? -1 : stack.peek();
+    }
+
+    // Retrieves the minimum element in the stack
+    public int getMin() {
+        return minStack.isEmpty() ? -1 : minStack.peek();
+    }
+}
